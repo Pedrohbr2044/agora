@@ -1,0 +1,26 @@
+document.addEventListener('DOMContentLoaded', function () {
+    const chatLog = document.getElementById('chatLog');
+    const userInput = document.getElementById('userInput');
+
+    function appendMessage(user, message) {
+        const messageDiv = document.createElement('div');
+        messageDiv.innerHTML = `<strong>${user}:</strong> ${message}`;
+        chatLog.appendChild(messageDiv);
+    }
+
+    function sendMessage() {
+        const message = userInput.value;
+        if (message.trim() !== '') {
+            appendMessage('Você', message);
+            // Aqui você pode adicionar a lógica do chatbot para responder
+            // Por exemplo: appendMessage('Assistente', 'Olá! Como posso ajudar?');
+            userInput.value = '';
+        }
+    }
+
+    userInput.addEventListener('keyup', function (event) {
+        if (event.key === 'Enter') {
+            sendMessage();
+        }
+    });
+});
